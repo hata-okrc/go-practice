@@ -1,21 +1,15 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
+	"log"
+
+	"github.com/hata-okrc/go-practice.git/controllers"
 )
 
-
-
 func main() {
-	fmt.Println("Hello World!!")
-
-	router := http.NewServeMux()
-	router.HandleFunc("/", Home)
-
-	http.ListenAndServe(":8080", router)
-}
-
-func Home(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("home")
+	// controllers パッケージから StartWebServer を呼び出す
+	err := controllers.StartWebServer()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
